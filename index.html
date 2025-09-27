@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Interactive Demo — CSS & JavaScript</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="site-header">
+    <div class="header-left">
+      <h1>Interactive Demo — CSS & JavaScript</h1>
+      <p class="lead">
+        Animations, reusable functions, scope examples and JS-triggered effects
+      </p>
+    </div>
+    <nav class="topbar">
+      <button class="nav-btn" onclick="triggerTheme()">Toggle Theme</button>
+      <button class="nav-btn" onclick="toggleModal()">Open Modal</button>
+      <button class="nav-btn" onclick="startSequence()">Run Sequence</button>
+    </nav>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="wrap">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero card">
+      <div class="info">
+        <h2>Part 1 — CSS-only animations</h2>
+        <p>
+          Hover the green button and the coral box to see pure-CSS transitions.
+          The loader spins using CSS keyframes.
+        </p>
+        <button class="animated-btn" onclick="flashBox()">Hover &amp; Click Me</button>
+        <div class="small-muted">Small loader below (CSS only)</div>
+        <div class="loader" aria-hidden="true"></div>
+      </div>
+      <div class="hero-box-container">
+        <div class="box" id="heroBox">Hi</div>
+        <div class="small-muted">Box with hover lift</div>
+      </div>
+    </section>
+
+    <!-- ================= GRID LAYOUT ================= -->
+    <div class="grid">
+
+      <!-- ================= LEFT COLUMN ================= -->
+      <div class="left-col">
+
+        <!-- FUNCTIONS CARD -->
+        <div class="card">
+          <h3>Part 2 — JavaScript functions (scope, params, returns)</h3>
+          <p>
+            This section demonstrates global vs local scope, functions with
+            parameters, and return values.
+          </p>
+          <div class="fn-controls">
+            <button class="animated-btn" onclick="demoMultiply()">
+              Multiply 6 × globalValue
+            </button>
+            <button
+              class="animated-btn secondary"
+              onclick="showSquarePrompt()"
+            >
+              Square (prompt)
+            </button>
+          </div>
+          <div id="fn-output" class="fn-output">
+            Result area — click a button above to show function results here.
+          </div>
+          <hr />
+          <h3>Reusable calculation utilities</h3>
+          <pre class="code-sample">
+// Example functions shown in script.js:
+function multiplyByGlobal(num) { ... }
+function square(n) { ... }
+function clamp(v,min,max) { ... }
+          </pre>
+        </div>
+
+        <!-- FLIP CARD -->
+        <div class="card">
+          <h3>Card Flip (CSS + JS)</h3>
+          <p>
+            Click the card to flip it. The flip is performed by toggling a
+            class via JavaScript.
+          </p>
+          <div class="flipper" title="Click to flip">
+            <div class="flip-card" id="flipCard" onclick="toggleFlip()">
+              <div class="flip-face flip-front">Front — Click me</div>
+              <div class="flip-face flip-back">Back — Nice!</div>
+            </div>
+          </div>
+          <div class="small-muted">
+            Flip state: <span id="flipState">not flipped</span>
+          </div>
+        </div>
+
+        <!-- ANIMATED BOX -->
+        <div class="card">
+          <h3>Animate the box</h3>
+          <p>
+            Use the controls to trigger CSS animations from JavaScript. The
+            function that does this is reusable.
+          </p>
+          <div id="control-box" class="box">Box</div>
+          <div class="box-controls">
+            <button
+              class="animated-btn"
+              onclick="triggerAnimation('control-box')"
+            >
+              Slide In
+            </button>
+            <button
+              class="animated-btn danger"
+              onclick="pulse('control-box', 3)"
+            >
+              Pulse 3×
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= RIGHT COLUMN ================= -->
+      <aside class="right-col">
+
+        <div class="card">
+          <h3>Part 3 — Integration &amp; modal</h3>
+          <p>
+            Open the modal to see a slide-down animation. The modal is toggled
+            using a JS function that changes classes/styles.
+          </p>
+          <button class="animated-btn" onclick="toggleModal()">Open Modal</button>
+        </div>
+
+        <div class="card">
+          <h3>Interactive Demo Controls</h3>
+          <p>
+            Try the quick demo sequence that runs multiple JS-triggered
+            animations in order.
+          </p>
+          <button class="animated-btn" onclick="startSequence()">
+            Run demo sequence
+          </button>
+        </div>
+
+        <div class="card">
+          <h3>Console (UI log)</h3>
+          <p>
+            This log displays actions triggered by JavaScript. Useful for
+            debugging and showing scope usage.
+          </p>
+          <ul id="ui-log" class="ui-log">
+            <li>Ready. Click buttons to see actions.</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ================= MODAL ================= -->
+  <div class="modal" id="myModal">
+    <div class="modal-panel">
+      <button class="close" onclick="toggleModal()">&times;</button>
+      <h3>Modal Animation 🎉</h3>
+      <p>This modal slides in and out with CSS, controlled by JavaScript.</p>
+      <p>
+        You can also close this modal by clicking the × button or pressing ESC
+        if implemented.
+      </p>
+      <p>
+        Modals are common in modern web apps for forms, confirmations, or
+        additional details.
+      </p>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <p>Made with ❤️ using CSS3 &amp; JavaScript functions</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
